@@ -1,7 +1,7 @@
-bashscripts
+scripts
 ===========
 
-Random bash scripts
+Random scripts
 
 ## compare_zone.sh
 
