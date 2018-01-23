@@ -54,12 +54,12 @@ if 'error' in j:
     exit()
 
 # 0 is Bridge, 1 is Broadband, 2 is 5Ghz Wifi, 3 is 2.4Ghz wifi, 4 is ethernet, 5 is coax
-ret = { '24ghz_tx': j[3]['txbytes'], '24ghz_rx': j[3]['rxbytes'],
-        '5ghz_tx': j[2]['txbytes'], '5ghz_rx': j[2]['rxbytes'],
-        'bb_tx': j[1]['txbytes'], 'bb_rx': j[1]['rxbytes'],
-        'eth_tx': j[4]['txbytes'], 'eth_rx': j[4]['rxbytes'],
-        'bridge_tx': j[0]['txbytes'], 'bridge_rx': j[0]['rxbytes'],
-        'coax_tx': j[5]['txbytes'], 'coax_rx': j[5]['rxbytes'],
+ret = { '24ghz_tx': j[3]['txBytes'], '24ghz_rx': j[3]['rxBytes'],
+        '5ghz_tx': j[2]['txBytes'], '5ghz_rx': j[2]['rxBytes'],
+        'bb_tx': j[1]['txBytes'], 'bb_rx': j[1]['rxBytes'],
+        'eth_tx': j[4]['txBytes'], 'eth_rx': j[4]['rxBytes'],
+        'bridge_tx': j[0]['txBytes'], 'bridge_rx': j[0]['rxBytes'],
+        'coax_tx': j[5]['txBytes'], 'coax_rx': j[5]['rxBytes'],
         }
 
 # Now let's do devices per network - 0 = ethernet, 4 = 5ghz, 5 = 2.4ghz
