@@ -1,3 +1,8 @@
+### get_g1100_stats.py
+###   This script makes API calls to the Verizon G1100 router
+###   to retrieve interesting stats, and then outputs in a key:value
+###   format, which is used in the Cacti graphing application.
+
 import requests
 import json
 from optparse import OptionParser
@@ -48,11 +53,13 @@ if 'error' in j:
     print 'Login failed or too many sessions'
     exit()
 
-# 1 is Broadband, 2 is 5Ghz Wifi, 3 is 2.4Ghz wifi, 4 is ethernet
-ret = { '24ghz_tx': j[3]['txPackets'], '24ghz_rx': j[3]['rxPackets'],
-        '5ghz_tx': j[2]['txPackets'], '5ghz_rx': j[2]['rxPackets'],
-        'bb_tx': j[1]['txPackets'], 'bb_rx': j[1]['rxPackets'],
-        'eth_tx': j[4]['txPackets'], 'eth_rx': j[4]['rxPackets'],
+# 0 is Bridge, 1 is Broadband, 2 is 5Ghz Wifi, 3 is 2.4Ghz wifi, 4 is ethernet, 5 is coax
+ret = { '24ghz_tx': j[3]['txbytes'], '24ghz_rx': j[3]['rxbytes'],
+        '5ghz_tx': j[2]['txbytes'], '5ghz_rx': j[2]['rxbytes'],
+        'bb_tx': j[1]['txbytes'], 'bb_rx': j[1]['rxbytes'],
+        'eth_tx': j[4]['txbytes'], 'eth_rx': j[4]['rxbytes'],
+        'bridge_tx': j[0]['txbytes'], 'bridge_rx': j[0]['rxbytes'],
+        'coax_tx': j[5]['txbytes'], 'coax_rx': j[5]['rxbytes'],
         }
 
 # Now let's do devices per network - 0 = ethernet, 4 = 5ghz, 5 = 2.4ghz
